@@ -35,7 +35,7 @@ export function PaginationUtil({pages,handlePage}:Props){
       handlePage(currentPage + 1)
     }
   };
-
+  console.log(pages)
   return (<>
         {pages > 1 ? (
         <Pagination>

@@ -24,7 +24,7 @@ export interface infoChart {
   averageAnswers: { average: string; description: string }[];
   totalAnswer: number;
   dataChart: { date: string; [key: string]: string }[];
-  lastAnswers:  { date: Date; id: number; bed: string; name: string }[];
+  lastAnswers:  { date: Date; id: number; bed: string; name: string; admission_id:string }[];
 }
 
 

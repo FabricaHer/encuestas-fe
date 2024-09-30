@@ -2,6 +2,7 @@ import { infoChart } from "@/app/general/page";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import moment from "moment";
+import Link from "next/link";
 
 interface LastAnswersProps {
   data: infoChart | undefined;
@@ -35,7 +36,9 @@ export function LastAnswers({ data }: LastAnswersProps) {
                     <p className="font-medium">
                       {moment(last.date).format("YYYY-MM-DD").toString()}
                     </p>
-                    <Button className="px-8 py-3 h-5">Ir</Button>
+                    <Button className="px-8 py-3 h-5" asChild>
+                      <Link href={`/general/survey/${last.admission_id}`}>Ver más</Link>
+                    </Button>
                   </div>
                 </div>
               ))
