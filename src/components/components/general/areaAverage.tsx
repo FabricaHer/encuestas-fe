@@ -16,7 +16,6 @@ export function AreaAverage({ data }: AreaAverageProps) {
           {data && data?.averageAnswers.length > 0
             ? data.averageAnswers.map((averages, i) => {
                 const averageInt: number = parseFloat(averages.average);
-                console.log(averageInt)
                 return (
                   <div key={i} className="flex justify-between items-center">
                     <p className="font-semibold text-lg">
