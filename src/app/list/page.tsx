@@ -5,7 +5,7 @@ import { PatientList } from "@/interfaces/request/patientList"
 import axios from "axios"
 import React from "react"
 
-export default async  function Page() {
+export default function Page() {
   const [data,setData] = React.useState<PatientList[]>([])
 
 

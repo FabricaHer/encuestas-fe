@@ -1,4 +1,3 @@
-
 import FormPatient from "@/components/components/list/adm/formPatient";
 import { Header } from "@/components/components/list/adm/header";
 import Patient from "@/components/components/list/adm/Patient";

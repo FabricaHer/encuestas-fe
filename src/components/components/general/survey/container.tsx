@@ -6,13 +6,7 @@ import { BACKEND_URL } from "../../../../config/api";
 import { PaginationUtil } from "../../../utils/pagination";
 import { Answers } from "./answers";
 
-// {
-//   "date": "2024-09-29T19:47:12.119Z",
-//   "id": 12,
-//   "bed": "Ceuta",
-//   "name": "HAMDI NABILA SALIM PEROZO",
-//   "admission_id": "0001031276"
-// }
+
 
 export interface ISurvey {
   date:Date;
