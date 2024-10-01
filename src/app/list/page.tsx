@@ -1,19 +1,19 @@
+'use client'
 import { AccordionList } from "@/components/components/list/accordion"
 import { BACKEND_URL } from "@/config/api"
 import { PatientList } from "@/interfaces/request/patientList"
+import axios from "axios"
+import React from "react"
 
-async function getPatientList():Promise<PatientList[]>{
-  const res = await fetch(`${BACKEND_URL}/dpadmwin/patientList`,{ next: { revalidate: 0 }})
-  if (!res.ok) {
-    throw new Error('Failed to fetch data')
-  }
-  const data = await res.json()
-  return data
+export default function Page() {
+  const [data,setData] = React.useState<PatientList[]>([])
 
-}
 
-export default async  function Page() {
-  const data =await  getPatientList();
+  React.useEffect(()=>{
+     axios.get(`${BACKEND_URL}/dpadmwin/patientList`).then(response =>{
+      setData(response.data) 
+     })
+  },[])
   return <>
    <AccordionList list={data}/>
   </>

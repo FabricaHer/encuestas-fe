@@ -18,6 +18,7 @@ export interface ISubQuestion {
   createAt: Date;
   updatedAt: Date;
   deleteAt: Date | null;
+  qualification?:number;
 }
 
 
