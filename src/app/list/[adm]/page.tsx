@@ -3,11 +3,10 @@ import FormPatient from "@/components/components/list/adm/formPatient";
 import { Header } from "@/components/components/list/adm/header";
 import Patient from "@/components/components/list/adm/Patient";
 import { Button } from "@/components/ui/button";
-import { Textarea } from "@/components/ui/textarea";
 import { BACKEND_URL } from "@/config/api";
 import { IAdmission } from "@/interfaces/admission.interface";
 import { Iformat } from "@/interfaces/format.interface";
-import { ArrowLeft, ArrowLeftCircle } from "lucide-react";
+import {  ArrowLeftCircle } from "lucide-react";
 import Link from "next/link";
 
 
