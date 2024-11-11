@@ -49,7 +49,7 @@ export function Container() {
     <>
       <div className="pt-4">
         <div className="grid grid-cols-4 gap-5">
-          {answers.length > 0 ? answers.map((answer) => <Answers data={answer} />) : null}
+          {answers.length > 0 ? answers.map((answer, i) => <Answers data={answer} key={i} />) : null}
         </div>
         <PaginationUtil pages={lastPage} handlePage={setCurrentPage} />
       </div>
