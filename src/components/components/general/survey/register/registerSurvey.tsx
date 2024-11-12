@@ -33,9 +33,10 @@ export interface requestForm {
 interface RegisterSurveyProps {
   admission: IAdmission | null;
   format: Iformat | null;
+  admissionNumber:string;
 }
 
-export default function RegisterSurvey({ format, admission }: RegisterSurveyProps) {
+export default function RegisterSurvey({ format, admission,admissionNumber }: RegisterSurveyProps) {
   const {toast} = useToast()
   const router = useRouter()
   const [answers, setAnswers] = React.useState<answerSchema[]>([]);
@@ -48,7 +49,8 @@ export default function RegisterSurvey({ format, admission }: RegisterSurveyProp
     format: format?.id ? format?.id : 0,
     patientId: admission?.id_patient ? admission?.id_patient : "",
   });
-
+  
+  
   React.useEffect(() => {
     let answers: answerSchema[] | undefined = [];
     format?.questions?.forEach((question) => {
@@ -72,10 +74,10 @@ export default function RegisterSurvey({ format, admission }: RegisterSurveyProp
         return newValue
       })
     }
-  }, []);
-
+  }, [admissionNumber]);
+  
   const handlerTextArea = (e:React.ChangeEvent<HTMLTextAreaElement>)=>{
-
+    
     setRequest((value)=>{
       const newValue = value
       newValue.comment =  e.target.value
@@ -95,7 +97,6 @@ export default function RegisterSurvey({ format, admission }: RegisterSurveyProp
   const handlerOnClick = async () => {
 
     try {
-      console.log(request)
      const response = await axios.post(`${BACKEND_URL}/answer-patient`,request)
       if(response.status=== 201){
         toast({

@@ -1,7 +1,5 @@
 "use client";
-import FormPatient from "@/components/components/list/adm/formPatient";
 import { Header } from "@/components/components/list/adm/header";
-import Patient from "@/components/components/list/adm/Patient";
 import { Button } from "@/components/ui/button";
 import { BACKEND_URL } from "@/config/api";
 import { IAdmission } from "@/interfaces/admission.interface";
@@ -13,9 +11,10 @@ import axios from "axios";
 import InputAdmission from "../../../../components/components/general/survey/register/inputAdmission";
 import RegisterSurvey from "../../../../components/components/general/survey/register/registerSurvey";
 
-export default function Page({ params }: { params: { adm: string } }) {
+export default function Page() {
   const [admission, setAdmission] = useState<IAdmission | null>(null);
   const [format, setFormat] = useState<Iformat | null>(null);
+  const [active,setActive] = useState<boolean>(false);
   const [admissionNumber, setAdmissionNumber] = useState<string>();
   useEffect(() => {
     if (admissionNumber) {
@@ -24,13 +23,13 @@ export default function Page({ params }: { params: { adm: string } }) {
         .then((response) => {
           if (response.status === 200) {
             setAdmission(response.data[0]);
-
             if (response.data[0] && response.data[0].bed_id) {
               axios
                 .get(`${BACKEND_URL}/format/bed/${response.data[0].bed_id}`)
                 .then((response) => {
                   if (response.status === 200) {
                     setFormat(response.data);
+                    setActive(true) 
                   }
                 });
             }
@@ -40,7 +39,7 @@ export default function Page({ params }: { params: { adm: string } }) {
   }, [admissionNumber]);
   return (
     <>
-      {admissionNumber ? (
+      {active ? (
         <>
           <div>
             <Button
@@ -55,7 +54,7 @@ export default function Page({ params }: { params: { adm: string } }) {
             </Button>
           </div>
           <Header />
-          <RegisterSurvey format={format} admission={admission} />
+          <RegisterSurvey format={format} admission={admission} admissionNumber={admissionNumber as string}/>
         </>
       ) : (
         <InputAdmission setAdmissionInput={setAdmissionNumber} />
